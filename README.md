@@ -1,6 +1,6 @@
 # PHP E-commerce
 <hr>
-# project5-Kids Toys Store 
+# project5-Kids Toys Store <br>
 ## **Done by** <br>
 **Majd Albalawneh**<br>
 **Samar alkhamis**<br>
@@ -8,8 +8,6 @@
 **Tamara Alshabatat**
 <br>
 <br>
-
-![Markdown Logo](media/screencapture-localhost-project5-landing2-html-2022-05-21-18_47_55.png)
 
 ***
 ## Introduction
@@ -25,7 +23,7 @@ After We Learn Set of Topics Like:
 9. Pedagogie active
 
 
-I'm DO IT!
+We DO IT!
 
 Build an e-commerce web application using PHP and MYSQL
 
@@ -38,10 +36,7 @@ Project contain admin dashboard; admin can add / update / delete :  users, produ
 
 
 1. Project Wireframe
-   * [Wireframe PDF](media//Wireframe-store.pdf)
-
-2. Project Mockup
-   * [Mockup PDF](media//mpocup-store.pdf)
+   * [Wireframe and Mockup PDF](media//Wireframe-store.pdf)
 
 3. Project Presentaion
    * [Mockup PDF](media//present.pptx)
