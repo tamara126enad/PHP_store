@@ -76,16 +76,19 @@ if(isset($_POST['order_btn'])){
 
 <div class="container">
 
-<section class="checkout-form">
+<section class="checkout-form" style="background-color: #f8f9fa;">
 
-   <h1 class="heading">complete your order</h1>
+   <h1 class="heading" style="color:#e46a64e6;">complete your order</h1>
 
-   <form action="" method="post">
+   <form action="" method="post" style="background-color: #f8f9fa;">
 
    <div class="display-order">
       <?php
         $sql1="SELECT * FROM cart INNER JOIN products ON products.product_id=cart.product_id";
+      //   $sql2="SELECT * FROM register INNER JOIN cart ON cart.id=register.id";
          $select_cart = mysqli_query($conn, $sql1);
+         //  mysqli_query($conn, $sql2);
+
          $total = 0;
          $grand_total = 0;
          if(mysqli_num_rows($select_cart) > 0){
@@ -93,28 +96,28 @@ if(isset($_POST['order_btn'])){
             $total_price = number_format($row['price'] * $row['quantity']);
             $grand_total = $total += $total_price;
       ?>
-      <span><?= $row['product_name']; ?>(<?= $row['quantity']; ?>)</span>
+      <span><?= $row['product_name']; ?>  (<?= $row['quantity']; ?>)</span>
       <?php
          }
       }else{
          echo "<div class='display-order'><span>your cart is empty!</span></div>";
       }
       ?>
-      <span class="grand-total"> grand total : $<?= $grand_total; ?>/- </span>
+      <span class="grand-total" style="background-color: #e46a64e6;"> grand total : <?= $grand_total; ?> JD</span>
    </div>
 
       <div class="flex">
          <div class="inputBox">
             <span>your name</span>
-            <input type="text" placeholder="enter your name" name="name" required>
+            <input type="text" value="<?php #echo $row['First_Name']; ?>" name="name" required>
          </div>
          <div class="inputBox">
             <span>your phone number</span>
-            <input type="number" placeholder="enter your phone number" name="number" required>
+            <input type="number"  value="<?php #echo $row['Phone_Num']; ?>" name="number" required>
          </div>
          <div class="inputBox">
             <span>your email</span>
-            <input type="email" placeholder="enter your email" name="email" required>
+            <input type="email"  value="<?php #echo $row['Email']; ?>" name="email" required>
          </div>
          <div class="inputBox">
             <span>payment method</span>
@@ -134,10 +137,10 @@ if(isset($_POST['order_btn'])){
          </div>
          
       </div>
-      <input type="submit" value="order now" name="order_btn" class="btn">
+      <input type="submit" value="order now" name="order_btn" class="btn" style=" background-color:#e46a64e6;">
    </form>
 
 </section>
-   
+
 </body>
 </html>

@@ -1,5 +1,12 @@
 <?php
 
+session_start();
+
+if(empty($_SESSION['email'])){
+  echo "<style> .restrict{display:none;} </style>";
+}
+
+
 include_once '../Configration/connection.php';
 
 
@@ -28,7 +35,6 @@ if(isset($_GET['add'])){
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css">
     <link rel="stylesheet" href="product.css">
     <link rel="stylesheet" href="../style2.css">
-
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <title>Store</title>
     <style>
@@ -37,38 +43,22 @@ if(isset($_GET['add'])){
 </head>
 <body>
 <div class="navbar">
-        <div class="logo"><img src="../img/logo_kids.gif"width="100px"> </div>
-       
-        <nav style="font-family: 'Nunito', sans-serif;
- font-family: 'Patrick Hand', cursive;">
- <ul style="margin-right: 5%; font-family: 'Nunito', sans-serif;
- font-family: 'Patrick Hand', cursive;">
- <li><a href="../index.html">Home</a></li>
- <li><a href="../product/product.php">Products</a></li>
- <li><a href="../Welcome/ContactUs.html">Contact Us</a></li>
- <li><a href="../Welcome/AboutUs.html">About US</a></li>
- 
- <li><a href="../Login/Login.php">Login</a></li>
- <li><a href="../Regestration/Signup.php">Sign Up</a></li>
- <li><a href="../User/User.php"><i class="fa fa-user" aria-hidden="true"></i></a></li>
- <li><a href=""><img style="position:absolute; margin-top:-2.5%; width:4%" src="../img/cart2.png" ></a></li><br><br>
-<li><select class="custom-select custom-select-sm mb-3">
-     <option selected disabled> Change Category </option>
-        <?php	$r ="SELECT * FROM categories";
-         $res_category=mysqli_query($conn, $r);
-		while ($row = mysqli_fetch_array($res_category)) { ?>
-          <option><a href="category.php?category=<?php echo $row['category_id']; ?>"><?php echo $row['category_name'];?>
-             </a></option>
-         <?php
-		}
-          ?>
- </select></li>
- </ul> <hr style="width:70%; margin-left: 31%;">
-        </nav>
-     </div>
+       <div class="logo"><img src="../img/logo_kids.gif"width="100px"> </div>
+       <nav >
+<ul style="margin-right: 5%; font-family: 'Nunito', sans-serif;
+font-family: 'Patrick Hand', cursive; color:black;">
+ <li><a style="color:black;" href="../index.php">Home</a></li>
+ <li><a style="color:black;" href="../product/product.php">Products</a></li>
+ <li><a style="color:black;" href="../Welcome/ContactUs.html">Contact Us</a></li>
+ <li><a style="color:black;" href="../Welcome/AboutUs.html">About US</a></li>
+ <li><a href="./Login/Login.php">Login</a></li>
+            <li><a href="./Regestration/Signup.php">Sign Up</a></li>
+  <li><a style="color:black;" href="../User/User.php"><i class="fa fa-user" aria-hidden="true"></i></a></li>
+ <li><a class="restric" style="color:black;" href="../Cart/cart.php"><i class="fas fa-shopping-cart"></i ></i></a></li>
 
-</ul>
+</ul> <hr style="width:70%; margin-left: 31%;">
        </nav>
+
     </div>
     <br><br><br>
 <section class="section-content ml">
@@ -135,7 +125,7 @@ if(isset($_GET['add'])){
                                             <!-- <input type="hidden" name="id_user"> -->
                                     <input type="hidden" name="hidden_price" value="<?php echo $row["price"]; ?>">
                                     <!----------------------------- change the color of the buttons 21-5-2022 at 6:22pm ------------------------>
-                                    <input type="submit" name="add" class="btn-warning btn-block btn-info" value="Add to cart">
+                                    <input type="submit" name="add" class="btn-warning  btn-info" value="Add to cart">
                                 </figcaption>
                             </figure>
                         </form>
