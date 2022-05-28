@@ -2,8 +2,11 @@
   session_start();
   if(!empty($_SESSION['email'])){
     echo "<style> .restrict{display:none;} </style>";
-  
-  }else{echo "<style> .restrict{display:block;} </style>";}
+    echo "<style> .restrict1{display:inline;} </style>";
+
+  }else{echo "<style> .restrict{display:inline;} </style>";
+  echo "<style> .restrict1{display:none;} </style>";
+  }
   ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -18,21 +21,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
   <link rel="preconnect" href="https://fonts.googleapis.com/%22%3E">
-  <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css%22%3E">
-  <link
-    href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@1,300&family=Patrick+Hand&family=Poppins:wght@100;200;300;400&family=Smooch&display=swap"
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@1,300&family=Patrick+Hand&family=Poppins:wght@100;200;300;400&family=Smooch&display=swap"
     rel="stylesheet">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css">
   <link rel="stylesheet" href="./bootstrap-4.4.1-dist/css/bootstrap.css">
-  <link rel=”stylesheet” href=”https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css”rel=”nofollow”
-    integrity=”sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm” crossorigin=”anonymous”>
-
-  <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"> -->
   <link rel="stylesheet" href="Welcome/style1.css">
   <link rel="stylesheet" href="style2.css">
-
-
 </head>
 
 
@@ -42,31 +36,33 @@ font-family: 'Patrick Hand', cursive;">
     <div class="land-container">
 
       <div class="navbar">
-        <div class="logo"><img src="./img/logo_kids.gif" width="90px"> </div>
-
+        <div class="logo"><img  src="./img/logo_kids.gif" width="50px"style="margin-left:20%"> </div>
         <nav>
-          <ul style="margin-right: 5%; font-family: 'Nunito', sans-serif;
-font-family: 'Patrick Hand', cursive; ">
+          <ul style="margin-right:30%; margin-top:2% ;font-family: 'Nunito', sans-serif;
+                    font-family: 'Patrick Hand', cursive; ">
             <li><a href="./index.php">Home</a></li>
             <li><a href="./product/product.php">Products</a></li>
             <li><a href="./Welcome/ContactUs.html">Contact Us</a></li>
-            <li><a href="./Welcome/AboutUs.html">About US</a></li>
-            <li class="restrict1"><a href="./Login/Login.php">Login</a></li>
-            <li class="restrict2"><a href="./Regestration/Signup.php">Sign Up</a></li>
-            <!-- <li id="restrict3"><a href="../User/User.php"><i class="fa fa-user" aria-hidden="true"></i></a></li> -->
-            <!-- <li><a href="./Cart/cart.php"><i class="fas fa-shopping-cart"></i></i></a></li> -->
+            <li><a href="./Welcome/AboutUs.html">About US</a></li></ul>
+          <ul style=" margin-top:2% ;font-family: 'Nunito', sans-serif;
+                    font-family: 'Patrick Hand', cursive; ">
+            <li class="restrict"><a href="./Login/Login.php">Login</a></li>
+            <li class="restrict"><a href="./Regestration/Signup.php">Sign Up</a></li>
+            <li class="restrict1"><a href="./Login/logout.php">Logout</a></li>
+
+            <li class="restrict1"><a href="./User/User.php"><i class="fa fa-user" aria-hidden="true"></i></a></li>
+            <li><a style="" href="./Cart/cart.php"><i class="fas fa-shopping-cart"></i></i></a></li>
           </ul>
-          <hr style="width:70%; margin-left: 31%;">
+          <hr style="width:50%; margin-left: 23%;">
         </nav>
 
       </div>
 
-      <div class="l-row" style="margin-top: -7%;">
+      <div class="l-row" style="margin-top: -2%;">
         <div>
           <h1 style="color: darkred;">Store For Children's toys Contain <br> The Most Of Kinds In One Places.</h1>
-          <p>simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard
-            dummy text ever since the 1500s, <br>when an unknown printer took a galley of type and scrambled it to make
-            a type specimen book. It has survived not only five</p>
+          <p>simply dummy text of the printing and typesetting industry. <br>Lorem Ipsum has been the industry's standard
+            dummy text ever since the 1500s</p>
         </div>
         <div class="l-word">
           <img src="./img/baby-store-hero-baby-img.png">
@@ -203,9 +199,8 @@ font-family: 'Patrick Hand', cursive; ">
 
     </div>
     <div style="margin-top:3% ;" class="l-word-discount ">
-      <h1>We have special discounts. Do not miss it !<br>
+      <h1>We have special <strong> Discount 10%</strong> <br>
         Let's shop now.</h1> <a href="product/product.php" class=" btn-dicount ">click here</a>
-
       <br><br>
       <?php
    include_once './Configration/connection.php';
@@ -217,11 +212,11 @@ font-family: 'Patrick Hand', cursive; ">
 
 ?>
       <div class="col-md-4" style="display:flex">
-        <div>
+        <div style="margin-left:10%">
           <form action="" method="GET">
             <figure class="card card-product-grid">
-              <div class="img-wrap" style="text-align:center">
-                <img style="width:200px" src="<?php echo $row['discount'];?>">
+              <div class="img-wrap" style="text-align:center ; ">
+                <img style="width:250px" src="<?php echo $row['discount']; ?>">
                 <!-- ################################################### -->
                 <label>
                   <?php
@@ -239,8 +234,10 @@ font-family: 'Patrick Hand', cursive; ">
                   </a>
 
                   <div class="price-wrap mt-2">
-                    <span class="price">Price:
-                      <?php echo $row['price']; ?> $
+                    <del class="price">Price:
+                      <del><?php echo $row['price']; ?> $</del>
+        </del><br>
+                      <span class="price">Price: <?php echo ($row['price']* (100-10) / 100); ?>$
                     </span>
                   </div>
                 </div>
@@ -263,11 +260,10 @@ font-family: 'Patrick Hand', cursive; ">
 echo "<h3>NO DATA FOUND.</h3>";
 } ?>
       </div> <!-- row end.// -->
-    </div>
+</div>
   </div>
 
   <div style="text-align:center" class="col-lg-12">
-
 
     <?php } ?>
   <!-- //////////////////footer -->
@@ -316,8 +312,8 @@ echo "<h3>NO DATA FOUND.</h3>";
             <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mt-3">
               <h6 class="text-uppercase mb-4 font-weight-bold">Follow us</h6>
 
-              <!-- linkedin majd -->
-              <a class="btn btn-primary btn-floating m-1" style="background-color: #3b5998" href="https://web.facebook.com/ToysRUsME/?lng=en&subpath=en-qa&_rdc=1&_rdr" role="button"><i
+             
+              <a class="btn btn-primary btn-floating m-1" style="background-color: #3b5998" href="https://web.facebook.com/ToysRUsME/?lng=en&subpath=en-qa&_rdc=1&_rdr" target="_blank" role="button"><i
                   class="fab fa-facebook-f"></i></a>
 
 

@@ -1,11 +1,12 @@
 <?php
+  session_start();
+  if(!empty($_SESSION['email'])){
+    echo "<style> .restrict{display:none;} </style>";
+    echo "<style> .restrict1{display:inline;} </style>";
 
-session_start();
-
-if(empty($_SESSION['email'])){
-  echo "<style> .restrict{display:none;} </style>";
-}
-
+  }else{echo "<style> .restrict{display:inline;} </style>";
+  echo "<style> .restrict1{display:none;} </style>";
+  }
 
 include_once '../Configration/connection.php';
 
@@ -29,13 +30,12 @@ if(isset($_GET['add'])){
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
     <link rel="preconnect" href="https://fonts.googleapis.com/%22%3E">
-    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css%22%3E">
-    <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@1,300&family=Patrick+Hand&family=Poppins:wght@100;200;300;400&family=Smooch&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@1,300&family=Patrick+Hand&family=Poppins:wght@100;200;300;400&family=Smooch&display=swap"
+    rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css">
+    <link rel="stylesheet" href="./bootstrap-4.4.1-dist/css/bootstrap.css">
     <link rel="stylesheet" href="product.css">
     <link rel="stylesheet" href="../style2.css">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <title>Store</title>
     <style>
         .prod{width: 240px; height: 150px; margin-left: 2%;}
@@ -43,23 +43,28 @@ if(isset($_GET['add'])){
 </head>
 <body>
 <div class="navbar">
-       <div class="logo"><img src="../img/logo_kids.gif"width="100px"> </div>
+       <div class="logo"><img src="../img/logo_kids.gif" width="50px"style="margin-left:20%"> </div>
        <nav >
-<ul style="margin-right: 5%; font-family: 'Nunito', sans-serif;
-font-family: 'Patrick Hand', cursive; color:black;">
- <li><a style="color:black;" href="../index.php">Home</a></li>
- <li><a style="color:black;" href="../product/product.php">Products</a></li>
- <li><a style="color:black;" href="../Welcome/ContactUs.html">Contact Us</a></li>
- <li><a style="color:black;" href="../Welcome/AboutUs.html">About US</a></li>
- <li><a href="./Login/Login.php">Login</a></li>
-            <li><a href="./Regestration/Signup.php">Sign Up</a></li>
-  <li><a style="color:black;" href="../User/User.php"><i class="fa fa-user" aria-hidden="true"></i></a></li>
- <li><a class="restric" style="color:black;" href="../Cart/cart.php"><i class="fas fa-shopping-cart"></i ></i></a></li>
+       <ul style="margin-right:30%; margin-top:2% ;font-family: 'Nunito', sans-serif;
+                    font-family: 'Patrick Hand', cursive; ">
+            <li><a href="../index.php">Home</a></li>
+            <li><a href="../product/product.php">Products</a></li>
+            <li><a href="../Welcome/ContactUs.html">Contact Us</a></li>
+            <li><a href="../Welcome/AboutUs.html">About US</a></li></ul>
+          <ul style=" margin-top:2% ;font-family: 'Nunito', sans-serif;
+                    font-family: 'Patrick Hand', cursive; ">
+            <li class="restrict"><a href="../Login/Login.php">Login</a></li>
+            <li class="restrict"><a href="../Regestration/Signup.php">Sign Up</a></li>
+            <li class="restrict1"><a href="../Login/logout.php">Logout</a></li>
 
-</ul> <hr style="width:70%; margin-left: 31%;">
-       </nav>
+            <li class="restrict1"><a href="../User/User.php"><i class="fa fa-user" aria-hidden="true"></i></a></li>
+            <li><a style="" href="../Cart/cart.php"><i class="fas fa-shopping-cart"></i></i></a></li>
+          </ul>
+          <hr style="width:50%; margin-left: 23%;">
+        </nav>
 
-    </div>
+    
+     </div>
     <br><br><br>
 <section class="section-content ml">
     <div class="container-fluied">
@@ -91,7 +96,7 @@ font-family: 'Patrick Hand', cursive; color:black;">
                         <form action="" method="GET">
                             <figure class="card card-product-grid">
                                 <div class="img-wrap"  style="text-align:center">
-                                    <img class="prod" src="<?php echo $row['img'];?>">
+                                    <img class="prod" src="<?php echo $row['img'];?>"><br>
                                     <!-- ################################################### -->
                                     <label><?php 
                                    $cat= "SELECT categories.category_name FROM categories INNER JOIN products
@@ -107,14 +112,15 @@ font-family: 'Patrick Hand', cursive; color:black;">
                                             class="title"><?php echo $row['product_name']; ?></a>
 
                                         <div class="price-wrap mt-2">
-                                            <span class="price">Price: <?php echo $row['price']; ?> $</span>
+                                            <span class="price">Price: <?php echo $row['price']; ?> $</span><br>
                                         </div> 
                                     </div>
                                     <!-- col.// -->
                                     <div class="col" style="text-align:center">
-                                        <p class="card-text">Quantity:
-                                            <input style="text-align:center" type="number" min="1" max="25" name="quantity" class="form-control"                                               value="1" style="width: 60px;">
-                                        </p>
+                                       <br> <p class="card-text">Quantity:    </p>
+
+                                           <input style="text-align:center" type="number" min="1" max="25" name="quantity" class="form-control"                                               value="1" style="width: 50px;">
+                                    
                                     </div> <!-- col.// -->
                                     <br>
 
@@ -184,13 +190,10 @@ font-family: 'Patrick Hand', cursive; color:black;">
 <!-- ========================= SECTION CONTENT END// ========================= -->
 
 <!-- ========================= FOOTER ========================= -->
-    <!-- //////////////////footer -->
-    <div class="container-fluied">
+<div class="container-fluied">
     <!-- Footer -->
-    <footer
-            class="text-center text-lg-start text-primary"
-            style="background: linear-gradient(to right, rgba(216, 112, 147, 0.377),rgba(216, 112, 147, 0.235), rgba(216, 112, 147, 0.087));"           
-            >
+    <footer class="text-center text-lg-start "
+      style="background: linear-gradient(to right,  #e558519a,#e46a6493, rgba(216, 112, 147, 0.215));">
       <!-- Grid container -->
       <div class="container p-4 pb-0">
         <!-- Section: Links -->
@@ -202,37 +205,22 @@ font-family: 'Patrick Hand', cursive; color:black;">
               <h6 class="text-uppercase mb-4 font-weight-bold">
                 Toys Shop
               </h6>
-              <p>
-                Toys shop has announced that Toys store is opening , its separate platform that provides The most distinctive games that the child spends his time enjoying and learning, has amassed more than 35 million customers.
+              <p style="text-align: justify; ">
+                Toys shop has announced that Toys store is opening , its separate platform that provides The most
+                distinctive games that the child spends his time enjoying and learning, has amassed more than 35 million
+                customers.
               </p>
             </div>
             <!-- Grid column -->
-  
+
             <hr class="w-100 clearfix d-md-none" />
-  
-            <!-- Grid column -->
-            <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mt-3">
-              <h6 class="text-uppercase mb-4 font-weight-bold">Categores</h6>
-              <p >
-                <a class="text-primary">Electronic Toys</a>
-              </p>
-              <p>
-                <a class="text-primary">Crative Toys</a>
-              </p>
-              <p>
-                <a class="text-primary">Educational Toys</a>
-              </p>
-              <p>
-                <a class="text-primary" >Dolls Toys</a>
-              </p>
-            </div>
-            <!-- Grid column -->
-  
+
+
             <hr class="w-100 clearfix d-md-none" />
-  
+
             <!-- Grid column -->
             <hr class="w-100 clearfix d-md-none" />
-  
+
             <!-- Grid column -->
             <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mt-3">
               <h6 class="text-uppercase mb-4 font-weight-bold">Contact Us</h6>
@@ -241,49 +229,20 @@ font-family: 'Patrick Hand', cursive; color:black;">
               <p><i class="fas fa-phone mr-3"></i> +960 7710101010</p>
             </div>
             <!-- Grid column -->
-  
+
             <!-- Grid column -->
             <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mt-3">
               <h6 class="text-uppercase mb-4 font-weight-bold">Follow us</h6>
-  
-              <!-- linkedin majd -->
-              <a
-                 class="btn btn-primary btn-floating m-1"
-                 style="background-color: #3b5998"
-                 href="#!"
-                 role="button"
-                 ><i class="fab fa-facebook-f"></i
-                ></a>
-  
-              
-  
-              <!-- github samer -->
-              <a
-                 class="btn btn-primary btn-floating m-1"
-                 style="background-color: #dd4b39"
-                 href="#!"
-                 role="button"
-                 ><i class="fab fa-google"></i
-                ></a>
-  
-              
-                    <br>
-              <!-- Linkedin -->
-              <a
-                 class="btn btn-primary btn-floating m-1"
-                 style="background-color: #0082ca"
-                 href="https://www.linkedin.com/in/tamara-al-shabatat-060452123/?challengeId=AQFBHTafIZQKgAAAAYAhs1i-oKYMHGzoCp7CFeBZxbEnPZafk74JDnX6xmEwh0tDvN3Eq6-LHqiH4WRl2oxvFyTOX64Dyzv3lQ&submissionId=3ffc26ce-3a62-e516-90b4-716d0cbeeb40"
-                 role="button" target="_blank"
-                 ><i class="fab fa-linkedin-in"></i
-                ></a>
-              <!-- Github -->
-              <a
-                 class="btn btn-primary btn-floating m-1"
-                 style="background-color: #333333"
-                 href="https://github.com/majdalbalawneh"
-                 role="button" target="_blank"
-                 ><i class="fab fa-github"></i
-                ></a>
+
+             
+              <a class="btn btn-primary btn-floating m-1" style="background-color: #3b5998" href="https://web.facebook.com/ToysRUsME/?lng=en&subpath=en-qa&_rdc=1&_rdr" target="_blank" role="button"><i
+                  class="fab fa-facebook-f"></i></a>
+
+
+              <br>
+             
+              <a class="btn btn-primary btn-floating m-1" style="background-color: #333333"
+                href="https://github.com/samaralkhamis/Project5PHP" role="button" target="_blank"><i class="fab fa-github"></i></a>
             </div>
           </div>
           <!--Grid row-->
@@ -291,19 +250,17 @@ font-family: 'Patrick Hand', cursive; color:black;">
         <!-- Section: Links -->
       </div>
       <!-- Grid container -->
-  
+
       <!-- Copyright -->
-      <div
-           class="text-center p-3"
-           style="background-color: rgba(0, 0, 0, 0.2)"
-           >
+      <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2)">
         MST<sup>2</sup>&nbsp; © 2022 Copyright:
-        <a  href="https://www.orange.jo/ar/pages/default.aspx" target="_blank">Orange.jo</a> 
-          
+        <a href="https://www.orange.jo/ar/pages/default.aspx" target="_blank">Orange.jo</a>
+
       </div>
       <!-- Copyright -->
     </footer>
     <!-- Footer -->
+
 
 <!-- ========================= FOOTER END // ========================= -->
 

@@ -1,19 +1,31 @@
+<?php
+  session_start();
+  if(!empty($_SESSION['email'])){
+    echo "<style> .restrict{display:none;} </style>";
+    echo "<style> .restrict1{display:inline;} </style>";
+
+  }else{echo "<style> .restrict{display:inline;} </style>";
+  echo "<style> .restrict1{display:none;} </style>";
+  }
+  ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Dashboard</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
+    <link rel="preconnect" href="https://fonts.googleapis.com/%22%3E">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@1,300&family=Patrick+Hand&family=Poppins:wght@100;200;300;400&family=Smooch&display=swap"
+    rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css">
+    <link rel="stylesheet" href="./bootstrap-4.4.1-dist/css/bootstrap.css">
+    <link rel="stylesheet" href="Welcome/style1.css">
+    <link rel="stylesheet" href="style2.css">
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css">
-
     <link rel="stylesheet" href="product.css">
     <link rel="stylesheet" href="../style2.css">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 
     <style>
         .wrapper{
@@ -32,19 +44,25 @@
 </head>
 <body>
 <div class="navbar">
-       <div class="logo"><img src="../img/logo_kids.gif"width="90px"> </div>
+       <div class="logo"><img src="../img/logo_kids.gif" width="50px"style="margin-left:20%"> </div>
        <nav >
-<ul style="margin-right: 5%; font-family: 'Nunito', sans-serif;
-font-family: 'Patrick Hand', cursive; color:black;">
- <li><a style="color:black;" href="../index.php">Home</a></li>
- <li><a style="color:black;" href="../product/product.php">Products</a></li>
- <li><a style="color:black;" href="../Welcome/ContactUs.html">Contact Us</a></li>
- <li><a style="color:black;" href="../Welcome/AboutUs.html">About US</a></li>
- <li><a style="color:black;" href="../User/User.php"><i class="fa fa-user" aria-hidden="true"></i></a></li>
- <li><a style="color:black;" href="../Cart/cart.php"><i class="fas fa-shopping-cart"></i ></i></a></li>
+       <ul style="margin-right:30%; margin-top:2% ;font-family: 'Nunito', sans-serif;
+                    font-family: 'Patrick Hand', cursive; ">
+            <li><a href="../index.php">Home</a></li>
+            <li><a href="../product/product.php">Products</a></li>
+            <li><a href="../Welcome/ContactUs.html">Contact Us</a></li>
+            <li><a href="../Welcome/AboutUs.html">About US</a></li></ul>
+          <ul style=" margin-top:2% ;font-family: 'Nunito', sans-serif;
+                    font-family: 'Patrick Hand', cursive; ">
+            <li class="restrict"><a href="../Login/Login.php">Login</a></li>
+            <li class="restrict"><a href="../Regestration/Signup.php">Sign Up</a></li>
+            <li class="restrict1"><a href="../Login/logout.php">Logout</a></li>
 
-</ul> <hr style="width:70%; margin-left: 31%;">
-       </nav>
+            <li class="restrict1"><a href="../User/User.php"><i class="fa fa-user" aria-hidden="true"></i></a></li>
+            <li><a style="" href="../Cart/cart.php"><i class="fas fa-shopping-cart"></i></i></a></li>
+          </ul>
+          <hr style="width:50%; margin-left: 23%;">
+        </nav>
 
     
      </div>
@@ -55,7 +73,7 @@ font-family: 'Patrick Hand', cursive; color:black;">
                         <h1 style="text-align:center">User Information</h1>
                     </div>
                     <?php
-                    session_start();
+                
                     // Include config file
                     include_once '../Configration/connection.php';
                     $email= $_SESSION['email'];
@@ -141,22 +159,7 @@ font-family: 'Patrick Hand', cursive; color:black;">
   
             <hr class="w-100 clearfix d-md-none" />
   
-            <!-- Grid column -->
-            <!-- <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mt-3">
-              <h6 class="text-uppercase mb-4 font-weight-bold">Categores</h6>
-              <p >
-                <a class="text">Electronic Toys</a>
-              </p>
-              <p>
-                <a class="text-">Crative Toys</a>
-              </p>
-              <p>
-                <a class="text">Educational Toys</a>
-              </p>
-              <p>
-                <a class="text" >Dolls Toys</a>
-              </p>
-            </div> -->
+        
             <!-- Grid column -->
   
             <hr class="w-100 clearfix d-md-none" />
@@ -177,29 +180,15 @@ font-family: 'Patrick Hand', cursive; color:black;">
             <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mt-3">
               <h6 class="text-uppercase mb-4 font-weight-bold">Follow us</h6>
   
-              <!-- linkedin majd -->
-              <a
-                 class="btn btn-primary btn-floating m-1"
-                 style="background-color: #3b5998"
-                 href="#!"
-                 role="button"
-                 ><i class="fab fa-facebook-f"></i
-                ></a>
-  
-              
-  
-              
-  
-              
-                    <br>
-              
-              <a
-                 class="btn btn-primary btn-floating m-1"
-                 style="background-color: #333333"
-                 href="https://github.com/majdalbalawneh"
-                 role="button" target="_blank"
-                 ><i class="fab fa-github"></i
-                ></a>
+           
+              <a class="btn btn-primary btn-floating m-1" style="background-color: #3b5998" href="https://web.facebook.com/ToysRUsME/?lng=en&subpath=en-qa&_rdc=1&_rdr" target="_blank" role="button"><i
+                  class="fab fa-facebook-f"></i></a>
+
+
+              <br>
+             
+              <a class="btn btn-primary btn-floating m-1" style="background-color: #333333"
+                href="https://github.com/samaralkhamis/Project5PHP" role="button" target="_blank"><i class="fab fa-github"></i></a>
             </div>
           </div>
           <!--Grid row-->
